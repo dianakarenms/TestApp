@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="RtlHardcoded"
     >
 
     <android.support.design.widget.AppBarLayout
@@ -66,7 +65,7 @@
                             android:textStyle="bold"
                             tools:text="Season 1"
                             android:textColor="@android:color/white"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                            android:textSize="22sp"/>
 
                         <TextView
                             android:id="@+id/details_episodes_txt"
@@ -139,7 +138,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="8dp"
                 android:gravity="center_vertical"
-                android:text="name_2"
+                tools:text="Season_1"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 />
@@ -164,6 +163,7 @@
         android:src="@drawable/serie_thumbnail_placeholder"
         app:finalHeight="@dimen/image_final_width"
         app:finalYPosition="2dp"
+        app:finalXPosition="78dp"
         app:layout_behavior="com.itexico.karen.testapp.utils.AvatarImageBehavior"
         app:startHeight="2dp"
         app:startToolbarPosition="2dp"

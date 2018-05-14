@@ -21,6 +21,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatIma
 
     private float mCustomFinalYPosition;
     private float mCustomStartXPosition;
+    private float mCustomFinalXPosition;
     private float mCustomStartToolbarPosition;
     private float mCustomStartHeight;
     private float mCustomFinalHeight;
@@ -33,7 +34,6 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatIma
     private int mStartYPosition;
     private int mFinalYPosition;
     private int mStartHeight;
-    private int mFinalXPosition = 230;
     private float mChangeBehaviorPoint;
 
     public AvatarImageBehavior(Context context, AttributeSet attrs) {
@@ -43,6 +43,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatIma
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AvatarImageBehavior);
             mCustomFinalYPosition = a.getDimension(R.styleable.AvatarImageBehavior_finalYPosition, 0);
             mCustomStartXPosition = a.getDimension(R.styleable.AvatarImageBehavior_startXPosition, 0);
+            mCustomFinalXPosition = a.getDimension(R.styleable.AvatarImageBehavior_finalXPosition, 0);
             mCustomStartToolbarPosition = a.getDimension(R.styleable.AvatarImageBehavior_startToolbarPosition, 0);
             mCustomStartHeight = a.getDimension(R.styleable.AvatarImageBehavior_startHeight, 0);
             mCustomFinalHeight = a.getDimension(R.styleable.AvatarImageBehavior_finalHeight, 0);
@@ -79,7 +80,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatIma
         if (expandedPercentageFactor < mChangeBehaviorPoint) {
             float heightFactor = (mChangeBehaviorPoint - expandedPercentageFactor) / mChangeBehaviorPoint;
 
-            float distanceXToSubtract = ((mStartXPosition - mFinalXPosition)
+            float distanceXToSubtract = ((mStartXPosition - mCustomFinalXPosition)
                     * heightFactor) + (child.getHeight()/2);
             float distanceYToSubtract = ((mStartYPosition - mFinalYPosition)
                     * (1f - expandedPercentageFactor)) + (child.getHeight()/2);
@@ -121,8 +122,8 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatIma
         if (mStartXPosition == 0)
             mStartXPosition = (int) (child.getX() + (child.getWidth() / 2));
 
-        if (mFinalXPosition == 0)
-            mFinalXPosition = mContext.getResources().getDimensionPixelOffset(R.dimen.abc_action_bar_content_inset_material) + ((int) mCustomFinalHeight / 2);
+        if (mCustomFinalXPosition == 0)
+            mCustomFinalXPosition = mContext.getResources().getDimensionPixelOffset(R.dimen.abc_action_bar_content_inset_material) + ((int) mCustomFinalHeight / 2);
 
         if (mStartToolbarPosition == 0)
             mStartToolbarPosition = dependency.getY();

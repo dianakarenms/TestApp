@@ -1,5 +1,7 @@
 package com.itexico.karen.testapp.activities;
 
+import android.content.Context;
+import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -27,11 +29,14 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private SeasonRecyclerAdapter mAdapter;
     private List<Season> mSeasonList = new ArrayList<>();
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContext = this;
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.drawable.ic_action);
@@ -39,8 +44,14 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.seasons_recycler);
 
         mAdapter = new SeasonRecyclerAdapter(mSeasonList);
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
+        }
+        else{
+            mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
+        }
+
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
 
@@ -84,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(TmdbShow response) {
                         List<TmdbSeason> seasonsThumbnails = response.getSeasons();
                         for(int i = 0; i < seasonsThumbnails.size(); i++) {
-                            // TODO: Make sure the thumbnail corresponds to the season's data
                             mSeasonList.get(i).setThumbnail(seasonsThumbnails.get(i).getPosterPath());
                         }
                         mAdapter.notifyDataSetChanged();
@@ -93,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("Load Seasons", "Error ocurred");
+                        Log.e("Load Thumbnails", "Error ocurred");
                     }
                 }, true
         ));

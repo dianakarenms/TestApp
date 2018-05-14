@@ -30,7 +30,7 @@
             android:layout_marginStart="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
             android:layout_marginEnd="@dimen/margin_normal"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@android:color/white"
             tools:text="Season 0" />
 

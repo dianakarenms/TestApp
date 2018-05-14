@@ -107,10 +107,10 @@ public class DetailsActivity extends AppCompatActivity
     }
 
     private void bindActivity() {
-        mToolbar        = (Toolbar) findViewById(R.id.main_toolbar);
-        mTitle          = (TextView) findViewById(R.id.toolbar_title_txt);
-        mTitleContainer = (RelativeLayout) findViewById(R.id.main_linearlayout_title);
-        mAppBarLayout   = (AppBarLayout) findViewById(R.id.main_appbar);
+        mToolbar        = findViewById(R.id.main_toolbar);
+        mTitle          = findViewById(R.id.toolbar_title_txt);
+        mTitleContainer = findViewById(R.id.main_linearlayout_title);
+        mAppBarLayout   = findViewById(R.id.main_appbar);
     }
 
     @Override
