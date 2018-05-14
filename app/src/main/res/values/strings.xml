@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GoT Seasons</string>
+    <string name="app_name">Seasons -- Breaking Bad</string>
 
     <!--API ERRORS-->
     <string name="error_network">Error de conexión. Por favor revisa tu conexión a internet.</string>

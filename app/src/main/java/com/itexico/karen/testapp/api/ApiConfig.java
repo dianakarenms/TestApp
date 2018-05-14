@@ -6,8 +6,8 @@ import java.util.HashMap;
 
 public class ApiConfig {
 
-    public static final String seriesInfo = BuildConfig.TRAKT_API_URL.concat("shows/breaking-bad/");
-    public static final String seasons = seriesInfo.concat("seasons?extended=full");
+    private static final String seriesInfo = BuildConfig.TRAKT_API_URL.concat("shows/breaking-bad/");
+    public static final String seasons = seriesInfo.concat("seasons/%1$s?extended=full");
 
     public static final String thumbnails = BuildConfig.TMDB_API_URL.concat("1396?api_key=fb7bb23f03b6994dafc674c074d01761&language=en-US&include_image_language=en,null");
 
@@ -16,7 +16,7 @@ public class ApiConfig {
 
     /**
      * Authenticated header for all api requests, makes use of users' access token
-     * @return
+     * @return headers
      */
     public static HashMap<String, String> getTraktHeaders() {
         HashMap<String, String> headers = new HashMap<>();

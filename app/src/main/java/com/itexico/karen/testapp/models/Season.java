@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Season implements Serializable {
     @SerializedName("number")
@@ -22,6 +21,9 @@ public class Season implements Serializable {
     @SerializedName("title")
     @Expose
     private String title;
+    @SerializedName("votes")
+    @Expose
+    private String votes;
     private String thumbnail;
 
     public Integer getNumber() {
@@ -62,6 +64,14 @@ public class Season implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getVotes() {
+        return votes;
+    }
+
+    public void setVotes(String votes) {
+        this.votes = votes;
     }
 
     public String getThumbnail() {

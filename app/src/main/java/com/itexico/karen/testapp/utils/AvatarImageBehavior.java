@@ -10,14 +10,6 @@ import android.view.View;
 
 import com.itexico.karen.testapp.R;
 
-/**
- * created by SAGAR KUMAR NAYAK on 26 OCT 2017.
- * this is the custom behaviour class that extends the coordinatorlayout behavior.
- * it is used in the imageview for the custom transformation to take place when the appbar is
- * transformed by scrolling.
- */
-
-//http://aideafactory.com/custom-behavior-in-coordinatorlayout/
 @SuppressWarnings("unused")
 public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatImageView> {
 
@@ -41,7 +33,7 @@ public class AvatarImageBehavior extends CoordinatorLayout.Behavior<AppCompatIma
     private int mStartYPosition;
     private int mFinalYPosition;
     private int mStartHeight;
-    private int mFinalXPosition = 255;
+    private int mFinalXPosition = 230;
     private float mChangeBehaviorPoint;
 
     public AvatarImageBehavior(Context context, AttributeSet attrs) {

@@ -31,9 +31,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setLogo(R.drawable.ic_launcher_foreground);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.drawable.ic_action);
 
         mRecyclerView = findViewById(R.id.seasons_recycler);
 
@@ -48,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadSeasons() {
+        String url = String.format(ApiConfig.seasons, "");
         ApiClient.getInstance(this).addToRequestQueue(new ApiClient.GsonRequest<>(
-                ApiConfig.seasons,
+                url,
                 Season[].class,
                 Request.Method.GET,
                 ApiConfig.getTraktHeaders(),
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(TmdbShow response) {
                         List<TmdbSeason> seasonsThumbnails = response.getSeasons();
                         for(int i = 0; i < seasonsThumbnails.size(); i++) {
-                            // TODO: Make sure the thumbnail corresponds to the season data
+                            // TODO: Make sure the thumbnail corresponds to the season's data
                             mSeasonList.get(i).setThumbnail(seasonsThumbnails.get(i).getPosterPath());
                         }
                         mAdapter.notifyDataSetChanged();

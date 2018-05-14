@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.itexico.karen.testapp.R;
-import com.itexico.karen.testapp.activities.DetailsParallaxActivity;
+import com.itexico.karen.testapp.activities.DetailsActivity;
 import com.itexico.karen.testapp.models.Season;
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +41,7 @@ public class SeasonRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @Override
         public void onClick(View v) {
             Context context = v.getContext();
-            context.startActivity(DetailsParallaxActivity.newIntent(context, item));
+            context.startActivity(DetailsActivity.newIntent(context, item));
         }
     }
 
